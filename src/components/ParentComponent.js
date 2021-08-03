@@ -1,6 +1,8 @@
 import React from 'react';
+import Form from './Form'
+import DisplayData from './DisplayData'
 
-class Form extends React.Component {
+class ParentComponent extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -45,13 +47,16 @@ class Form extends React.Component {
   render() {
     return (
       <div>
-        <form>
-          <input type="text" name="firstName" onChange={this.handleFirstNameChange} value={this.props.formData.firstName} />
-          <input type="text" name="lastName" onChange={this.handleLastNameChange} value={this.props.formData.lastName} />
-        </form>
+        <Form
+          formData={this.state}
+          handleFirstNameChange={this.handleFirstNameChange}
+          handleLastNameChange={this.handleLastNameChange}
+        />
+        <DisplayData formData={this.state} />
       </div>
+
     )
   }
 }
 
-export default Form;
+export default ParentComponent;
